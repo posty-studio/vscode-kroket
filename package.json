@@ -1,0 +1,47 @@
+{
+    "name": "kroket",
+    "displayName": "Kroket",
+    "publisher": "postystudio",
+    "description": "Sass autocompletion for Kroket.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.48.0"
+    },
+    "categories": [
+        "Snippets"
+    ],
+    "keywords": [
+        "sass",
+        "scss",
+        "autocomplete",
+        "kroket",
+        "utility",
+        "css"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/posty-studio/vscode-kroket.git"
+    },
+    "bugs": {
+        "url": "https://github.com/posty-studio/vscode-kroket/issues"
+    },
+    "activationEvents": [
+        "workspaceContains:**/kroket.config.js"
+    ],
+    "icon": "icon.png",
+    "main": "./src/extension.js",
+    "scripts": {
+        "lint": "eslint ."
+    },
+    "devDependencies": {
+        "@types/vscode": "^1.48.0",
+        "@types/glob": "^7.1.3",
+        "@types/mocha": "^8.0.0",
+        "@types/node": "^14.0.27",
+        "eslint": "^7.6.0",
+        "glob": "^7.1.6",
+        "mocha": "^8.1.3",
+        "typescript": "^4.0.2",
+        "vscode-test": "^1.4.0"
+    }
+}
