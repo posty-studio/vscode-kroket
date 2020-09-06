@@ -5,6 +5,23 @@ const isCssValue = (line) => line.match(/.*:[\s]*/);
 
 function activate(context) {
     context.subscriptions.push(
+        vscode.workspace.onDidChangeTextDocument((e) => {
+            if (!e.document.isDirty && e.document.fileName.endsWith('kroket.config.js')) {
+                vscode.window
+                    .showInformationMessage(
+                        'Your Kroket config file has changed. Please reload your workspace for the changes to take effect.',
+                        'Reload'
+                    )
+                    .then((choice) => {
+                        if (choice === 'Reload') {
+                            vscode.commands.executeCommand('workbench.action.reloadWindow');
+                        }
+                    });
+            }
+        })
+    );
+
+    context.subscriptions.push(
         vscode.languages.registerCompletionItemProvider('scss', {
             provideCompletionItems(document, position) {
                 let completions = [];
