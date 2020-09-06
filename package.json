@@ -3,7 +3,7 @@
     "displayName": "Kroket",
     "publisher": "postystudio",
     "description": "Sass autocompletion for Kroket.",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "engines": {
         "vscode": "^1.48.0"
     },
