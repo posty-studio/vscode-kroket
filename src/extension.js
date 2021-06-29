@@ -1,9 +1,26 @@
 const vscode = require('vscode');
-const config = require(vscode.workspace.rootPath + '/kroket.config.js');
+const fs = require('fs');
 
 const isCssValue = (line) => line.match(/.*:[\s]*/);
 
 function activate(context) {
+    if (vscode.workspace.workspaceFolders === undefined) {
+        return;
+    }
+
+    let relativePattern = new vscode.RelativePattern(
+        vscode.workspace.workspaceFolders[0].uri.path,
+        '**/kroket.config.js'
+    );
+
+    let config = {}
+
+    vscode.workspace.findFiles(relativePattern, '/node_modules', 1).then((uris) => {
+        if (uris[0]) {
+            config = require(uris[0].path);
+        }
+    });
+
     context.subscriptions.push(
         vscode.workspace.onDidChangeTextDocument((e) => {
             if (!e.document.isDirty && e.document.fileName.endsWith('kroket.config.js')) {
